@@ -1,0 +1,163 @@
+# Regras do Projeto MCP Server
+
+## 🎯 Objetivo do Projeto
+Este é um servidor MCP (Model Context Protocol) implementado com NestJS, TypeScript e arquitetura limpa seguindo os princípios SOLID.
+
+## 🏗️ Arquitetura e Padrões
+
+### Clean Architecture
+- **Domain Layer**: Entidades, interfaces e regras de negócio
+- **Application Layer**: Casos de uso e serviços de aplicação  
+- **Infrastructure Layer**: Controllers, repositórios e integrações externas
+- **Shared Layer**: Utilitários e configurações compartilhadas
+
+### Princípios SOLID
+- **SRP**: Cada classe tem uma única responsabilidade
+- **OCP**: Aberto para extensão, fechado para modificação
+- **LSP**: Substituição de implementações via interfaces
+- **ISP**: Interfaces específicas e coesas
+- **DIP**: Inversão de dependência via injeção
+
+## 📁 Estrutura de Diretórios
+
+```
+src/
+├── domain/           # Camada de domínio
+│   ├── entities/    # Entidades e tipos
+│   └── interfaces/  # Contratos e interfaces
+├── application/      # Camada de aplicação
+│   └── use-cases/   # Casos de uso
+├── infrastructure/  # Camada de infraestrutura
+│   ├── controllers/ # Controllers REST
+│   └── repositories/# Implementações de repositórios
+├── shared/          # Utilitários compartilhados
+└── mcp/            # Módulo principal
+```
+
+## 🔧 Configurações de Desenvolvimento
+
+### Gerenciador de Pacotes
+- Use **pnpm** como gerenciador de pacotes
+- Comandos: `pnpm install`, `pnpm run start:dev`, etc.
+
+### TypeScript
+- Configuração em `tsconfig.json`
+- Paths aliases configurados: `@/*`, `@/domain/*`, etc.
+- Strict mode habilitado para melhor qualidade de código
+
+### Linting e Formatação
+- ESLint configurado com regras TypeScript
+- Prettier para formatação consistente
+- Execute `pnpm run lint` e `pnpm run format` regularmente
+
+## 📝 Convenções de Código
+
+### Nomenclatura
+- **Classes**: PascalCase (`McpRequestEntity`)
+- **Interfaces**: PascalCase com prefixo I (`IMcpRepository`)
+- **Métodos e propriedades**: camelCase (`processRequest`)
+- **Constantes**: UPPER_SNAKE_CASE (`MCP_ERROR_CODE`)
+- **Arquivos**: kebab-case (`mcp.use-case.ts`)
+
+### Estrutura de Arquivos
+- Um arquivo por classe/interface
+- Agrupar por funcionalidade em diretórios
+- Usar barrel exports (`index.ts`) quando apropriado
+
+### Imports
+- Use path aliases: `@/domain/entities/mcp.entity`
+- Imports relativos apenas para arquivos próximos
+- Organize imports: externos primeiro, depois internos
+
+## 🧪 Testes
+
+### Estrutura de Testes
+- Testes unitários para cada camada
+- Testes de integração para fluxos completos
+- Mocks para dependências externas
+- Coverage mínimo de 80%
+
+### Convenções de Teste
+- Arquivos de teste: `*.spec.ts`
+- Descreva cenários claramente
+- Use AAA pattern (Arrange, Act, Assert)
+- Teste casos de sucesso e erro
+
+## 📚 Documentação
+
+### Código
+- Documente interfaces públicas com JSDoc
+- Explique lógica complexa com comentários
+- Mantenha README.md atualizado
+- Use Swagger para documentação da API
+
+### Commits
+- Use conventional commits: `feat:`, `fix:`, `docs:`, etc.
+- Mensagens claras e descritivas
+- Referencie issues quando apropriado
+
+## 🚀 Deploy e Ambiente
+
+### Variáveis de Ambiente
+- Use `.env` para configurações locais
+- Documente todas as variáveis necessárias
+- Nunca commite arquivos `.env`
+
+### Scripts Disponíveis
+- `pnpm run start:dev` - Desenvolvimento
+- `pnpm run build` - Build de produção
+- `pnpm run test` - Executar testes
+- `pnpm run lint` - Verificar código
+
+## 🔒 Segurança
+
+### Boas Práticas
+- Valide todas as entradas
+- Use DTOs para transferência de dados
+- Implemente rate limiting
+- Configure CORS adequadamente
+- Nunca logue informações sensíveis
+
+## 📊 Monitoramento
+
+### Logs
+- Use structured logging
+- Inclua contexto relevante
+- Diferentes níveis: debug, info, warn, error
+- Não logue dados sensíveis
+
+### Métricas
+- Monitore performance de endpoints
+- Acompanhe uso de recursos
+- Configure alertas para problemas críticos
+
+## 🤝 Contribuição
+
+### Processo
+1. Crie uma branch para sua feature
+2. Implemente seguindo as convenções
+3. Adicione testes adequados
+4. Execute linting e testes
+5. Abra Pull Request com descrição clara
+
+### Code Review
+- Revise arquitetura e padrões
+- Verifique cobertura de testes
+- Confirme documentação atualizada
+- Valide performance quando relevante
+
+## 🎯 Objetivos de Qualidade
+
+- **Manutenibilidade**: Código limpo e bem estruturado
+- **Testabilidade**: Fácil de testar e mockar
+- **Escalabilidade**: Preparado para crescimento
+- **Performance**: Otimizado para produção
+- **Segurança**: Seguro por padrão
+
+## 📞 Suporte
+
+Para dúvidas sobre arquitetura ou padrões:
+- Consulte a documentação do NestJS
+- Revise os princípios SOLID
+- Analise exemplos no código existente
+- Abra issue para discussões técnicas
